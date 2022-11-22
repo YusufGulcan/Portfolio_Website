@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="Sergey Pozhilov (GetTemplate.com)" />
+	<script
+      src="https://kit.fontawesome.com/2da17f74f6.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>
+      Data Scraping Using Selenium
+    </title>
+
+    <link rel="shortcut icon" href="assets/images/gt_favicon.png" />
+
+    <!-- Bootstrap -->
+    <link
+      href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Icon font -->
+    <link
+      href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+      rel="stylesheet"
+    />
+    <!-- Fonts -->
+    <link
+      rel="stylesheet"
+      href="http://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700"
+    />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header id="header">
+      <div id="head" class="parallax" parallax-speed="1">
+        <h1 id="logo" class="text-center">
+          <span class="title">Yusuf Gulcan</span>
+          <span class="tagline"
+            >Data Scientist<br />
+        </h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button
+              type="button"
+              class="navbar-toggle"
+              data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1"
+            >
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span> <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="index.html">Home</a></li>
+              <li class="active"><a href="about.html">About</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                  >More Pages <b class="caret"></b
+                ></a>
+                <ul class="dropdown-menu">
+                  <li><a href="sidebar-left.html">Left Sidebar</a></li>
+                  <li><a href="sidebar-right.html">Right Sidebar</a></li>
+                  <li><a href="single.html">Blog Post</a></li>
+                </ul>
+              </li>
+              <li><a href="blog.html">Blog</a></li>
+            </ul>
+          </div>
+          <!--/.nav-collapse -->
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <div class="container">
+        <div class="row topspace">
+          <!-- Article main content -->
+          <article class="col-sm-8 maincontent">
+            <header class="page-header">
+              <h1 class="page-title">
+                How to Scrape LinkedIn Job Posts Using Selenium — Ready-to-Use
+                Notebook
+              </h1>
+            </header>
+
+            <p><img src="assets/images/Webscraping.png" alt="" /></p>
+
+            <p>
+              This article covers the basics of the Python Selenium library. It
+              provides solutions to common problems of automation tools as well
+              as helps learners develop an understanding of the structure of a
+              data scraping project.
+            </p>
+            <h3>Project:</h3>
+            <p>
+              First, I set up the chromium environment on my computer. I will
+              not show that part to keep the article simple. But you can see how
+              it is done here.
+            </p>
+            <p><img src="assets/images/linkedin.png" alt="" /></p>
+            <blockquote>
+              Velit, odit, eius, libero unde impedit quaerat dolorem assumenda
+              alias consequuntur optio quae maiores ratione tempore sit aliquid
+              architecto eligendi pariatur ab soluta doloremque dicta aspernatur
+              labore quibusdam dolore corrupti quod inventore. Maiores,
+              repellat, consequuntur eius repellendus eos aliquid molestiae ea
+              laborum ex quibusdam laudantium voluptates placeat consectetur
+              quam aliquam!
+            </blockquote>
+            <p>
+              LinkedIn does not require a login, as the code I walked through in
+              this article works. This saves a lot of effort and time. You can
+              start scraping by directly going to the LinkedIn job search
+              section. Search for a specific position in a location to generate
+              a link. (I searched for Data Scientist positions in the United
+              States.) Copy the link from the browser’s address bar and store
+              the link in a variable. Then, launch Chrome using Selenium
+              webdriver and navigate to the search result page by supplying the
+              variable to the get() function.
+            </p>
+
+            >
+            <script src="https://gist.github.com/YusufGulcan/b5869543d313406af4a34872d04cc343.js"></script>
+            <h3>Collecting Links:</h3>
+            <p>
+              From now on, I will show you how I went through the process. I had
+              to divide the data collection process into two because of the
+              structure of the LinkedIn search result pages.
+            </p>
+            <p>
+              <img src="assets/images/1_iKXa3HAhq2hO_linkedin2.png" alt="" />
+            </p>
+            <p>
+              The page composes of two parts; the job list and the content.
+              First, I had to go through the list and extract the links for each
+              job post. Then in the second step, I scraped the actual content by
+              going through the links. There is a little problem here. The list
+              on the left-hand side shows around 25 posts at the beginning. It
+              only loads more if users scroll down the page. However, after a
+              couple of scrolls, the page stops automatically loading more job
+              posts. After that point, users need to click this blue button:
+            </p>
+            <img src="assets/images/linkedin3.png" alt="" />
+            <p>
+              To solve this problem, I had to define two steps using Selenium
+              functions before anything:
+			  <ol>
+				<li>Scroll down the page as many times
+					as I desire.</li>
+				<li>Click the blue ‘See more jobs’ button if it
+					appears.</li>
+			  </ol> 
+            </p>
+
+			<script src="https://gist.github.com/YusufGulcan/88474b8e25eb41d4c8302b3137f6fbe9.js"></script>
+
+			<p>I created a while loop that sends the ‘END’ key to scroll down the page and if the blue button shows up, the Selenium webdriver finds the button and clicks on it. Each iteration loads 25 more job posts to the list. Thanks to the while loop, I could decide on the number of iterations. It also means; 25 * number of iterations = Number of job posts.</p>
+
+			<p>After the scrolling stage is done, I started scraping links. The trick here was to find the block that included the job list. I right-clicked and inspected the page and looked for the container that covered(highlighted) the job list.</p>
+			
+			<img src="assets/images/linkedin4.png" alt="" />
+			<p>After finding the list, I went through the list and extracted the information I needed using the find_element() function. The code is as follows;</p>
+			
+			<script src="https://gist.github.com/YusufGulcan/d0bc381751600f90fadc8d5c0f1a592c.js"></script>
+			<p>I also collected locations, company names,position names, and seniority levels in this section in a similar way and created a data frame out of this data.</p>
+			
+			<h3>Collecting Details:</h3>
+			<p>
+				The second part was collecting the skill requirements and job descriptions. I followed a similar way in this part as well. The only difference was that the browser needed to go through different pages rather than the items on the same list page.
+				So, I created a loop function that crawls each link on the data frame I previously gathered.
+				I encountered another issue here. At first sight, job pages do not show much content. Visitors have to click the ‘Show more’ button to see the details. Therefore, I needed to add a click action to the loop.
+			</p>
+			<img src="assets/images/linkedin5.png" alt="" />
+			<p>
+				To do this, I right-clicked the ‘Show more’ button and clicked ‘inspect’. Then, I right-clicked the highlighted section on the newly emerged window and copied the XPath address.
+			</p>
+			<img src="assets/images/linkedin6.png" alt="" />
+			<p></p>
+			<p>
+				I passed the XPath locator to the <b>find_element()</b> function and assigned a click action.
+				The next step was to collect the data revealed after clicking the <b>‘Show more’</b>  button. 
+				I used the class name locator in this step because there was no clear pattern among job posts. 
+				Some companies put the <b>‘About Us’</b> part first and then the skill requirements, while some only put the skill requirements. Therefore, I decided to collect everything in that HTML class section. I stored everything that is in text form in the list I had created previously.
+			</p>
+			<script src="https://gist.github.com/YusufGulcan/d173c26237835f8e3ac35ea52a0b78c6.js"></script>
+			
+			<i>
+				The snippets only show a sample of the code to keep the article as short and readable as possible. Check the <a href="https://github.com/YusufGulcan/Required_Skills">notebook</a>
+				to understand the logic and structure.
+			</i>
+			<p></p>
+			<p>
+				The last step was to create a data frame and merge both data frames. Then, the dataset was ready for analysis.
+			</p>
+
+			<script src="https://gist.github.com/YusufGulcan/4d3d2dc62de0e35068ab1ad42d9a9db8.js"></script>
+
+			<p>
+				This is what the final data frame looked like after removing the link column;
+			</p>
+			<img src="assets/images/linkedin7.png" alt="" />
+
+			<h3>Conclusion:</h3>
+			<p>The ability to use scraping tools is a big plus for data scientists. This skill reduces scientists’ dependency on other data sources like APIs and databases. It also grants the opportunity to work on unique real world data and create unique insights.</p>
+
+			<blockquote>
+				The entire notebook is on my <a href="https://github.com/YusufGulcan/Required_Skills">GitHub</a> page. Note that you can also extract data for other professions and locations with this code by simply changing inputs.
+			</blockquote>
+				
+			
+
+
+		</article>
+          <!-- /Article -->
+
+          <!-- Sidebar -->
+          <aside class="col-md-4 sidebar sidebar-left">
+            <div class="widget">
+              <h4>Lorem ipsum dolor sit</h4>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Facere, ratione delectus reiciendis nulla nisi pariatur
+                molestias animi eos repellat? Vel.
+              </p>
+            </div>
+            <div class="widget">
+              <h4>Lorem ipsum dolor sit</h4>
+              <ul>
+                <li><a href="">Lorem ipsum </a>dolor sit amet.</li>
+                <li>Nostrum, dolores labore tempore error.</li>
+                <li>Qui esse impedit vitae repellat.</li>
+                <li>Aliquam, laborum corporis molestiae nihil.</li>
+                <li>Voluptate, labore non adipisci nihil!</li>
+              </ul>
+            </div>
+          </aside>
+          <!-- /Sidebar -->
+        </div>
+      </div>
+      <!-- /container -->
+    </main>
+
+    <footer id="footer" class="topspace">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Contact</h3>
+            <div class="widget-body">
+              <p>
+                +90 543 364 35 26<br />
+                <a href="mailto:#">yusuf.gulcan@gmail.com</a><br />
+                <br />
+                Istanbul,TR, Etiler 34337
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Follow me</h3>
+            <div class="widget-body">
+				<p class="follow-me-icons">
+					<a href=""><i class="fa-brands fa-kaggle"></i></a>
+					<a href=""><i class="fa-brands fa-medium"></i></a>
+					<a href=""><i class="fa fa-github fa-2"></i></a>
+				  </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Text widget</h3>
+            <div class="widget-body">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque,
+                nihil natus explicabo ipsum quia iste aliquid repellat eveniet
+                velit ipsa sunt libero sed aperiam id soluta officia asperiores
+                adipisci maxime!
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque,
+                nihil natus explicabo ipsum quia iste aliquid repellat eveniet
+                velit ipsa sunt libero sed aperiam id soluta officia asperiores
+                adipisci maxime!
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Form widget</h3>
+            <div class="widget-body">
+              <p>
+                +234 23 9873237<br />
+                <a href="mailto:#">yusuf.gulcan0@gmail.com</a><br />
+                <br />
+                234 Hidden Pond Road, Ashland City, TN 37015
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- /row of widgets -->
+      </div>
+    </footer>
+
+    <footer id="underfooter">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 widget">
+            <div class="widget-body">
+              <p>234 Hidden Pond Road, Ashland City, TN 37015</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 widget">
+            <div class="widget-body">
+              <p class="text-right">
+                Copyright &copy; 2014, Your awesome name here<br />
+                Design:
+                <a href="http://www.gettemplate.com" rel="designer"
+                  >Initio by GetTemplate</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- /row of widgets -->
+      </div>
+    </footer>
+
+    <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="assets/js/template.js"></script>
+  </body>
+</html>

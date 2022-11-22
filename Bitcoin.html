@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="Sergey Pozhilov (GetTemplate.com)" />
+	<script
+      src="https://kit.fontawesome.com/2da17f74f6.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>
+      Bitcoin Price Predictions
+    </title>
+
+    <link rel="shortcut icon" href="assets/images/icon.png" />
+
+    <!-- Bootstrap -->
+    <link
+      href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Icon font -->
+    <link
+      href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+      rel="stylesheet"
+    />
+    <!-- Fonts -->
+    <link
+      rel="stylesheet"
+      href="http://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700"
+    />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header id="header">
+      <div id="head" class="parallax" parallax-speed="1">
+        <h1 id="logo" class="text-center">
+          <span class="title">Yusuf Gulcan</span>
+          <span class="tagline"
+            >Data Scientist<br />
+        </h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button
+              type="button"
+              class="navbar-toggle"
+              data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1"
+            >
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span> <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="index.html">Home</a></li>
+              <li class="active"><a href="about.html">About</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                  >More Pages <b class="caret"></b
+                ></a>
+                <ul class="dropdown-menu">
+                  <li><a href="sidebar-left.html">Left Sidebar</a></li>
+                  <li><a href="sidebar-right.html">Right Sidebar</a></li>
+                  <li><a href="single.html">Blog Post</a></li>
+                </ul>
+              </li>
+              <li><a href="blog.html">Blog</a></li>
+            </ul>
+          </div>
+          <!--/.nav-collapse -->
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <div class="container">
+        <div class="row topspace">
+          <!-- Article main content -->
+          <article class="col-sm-8 maincontent">
+            <header class="page-header">
+              <h1 class="page-title">
+                Machine Learning and Market Expectations
+              </h1>
+            </header>
+
+            <p><img src="assets/images/Bitcoin.jpeg" alt="" /></p>
+
+            <p>
+              Bitcoin has been a hot topic. It seems it will stay like that for a 
+              long time. The biggest mystery about Bitcoin is definitely its price. 
+              Is it going to increase or not?</p>
+
+            <p>Most likely, it will… At least, that is what I think. But what about others?
+               What do the majority think? And more interestingly, what do the machines
+                think? I will answer these questions in this article by combining the 
+                opinions of two sides.</p>
+
+            <p>According to fundamental economics, prices of tradable assets like Bitcoin 
+              are affected heavily by the expectation and demand in the market. A buyer 
+              buys something only if s/he thinks it can be sold for more. Considering that,
+               it becomes crucial to know the general opinion of an item to make relatable 
+               price predictions.</p>
+
+            <p>However, it would be too naive to think it is possible to make accurate 
+              price predictions by just looking at the demand or the expectation. For an 
+              acceptable accuracy rate, we would need complex tools to find patterns in 
+              price and analyze the market. Luckily, machine learning algorithms can do 
+              that for us.
+            </p>
+            <h3>Project Plan:</h3>
+            <p>
+              I plan to collect data representing the level of interest
+               in the internet and the general idea about Bitcoin to make 
+               predictions. Then, I will utilize a model primarily used for 
+               time-series forecasts, LSTM Neural Network. Step by step, I will;
+              <ul>
+                <li>Collect and process the data from different sources</li>
+                <li> Merge everything into a data frame</li>
+                <li>Feed the data to the machine-learning model</li>
+                <li>Evaluate the predictions</li>
+                <li>Create a price predictor application</li>
+              </ul>
+            </p>
+            <p><img src="assets/images/Bitcoin2.png" alt="" /></p>
+            <p>Explaining the details in coding would take too long if I
+               tried it in this article. Therefore, if interested, check the code
+                with explanations <a href="https://github.com/YusufGulcan/LSTM_Neural_Network_Bitcoin">here</a>.
+            </p>
+            <h3>Collect Data:</h3>
+            <p>Economics says demand for an asset is generally positively correlated 
+              with positive expectations. But how do I measure expectations?</p>
+            <p>Social media… I can clearly see what people think of a term on social media.
+              So, I collected tweets from Twitter and search trends from Google to
+              measure the expectations for Bitcoin.</p>
+            <p>The core of this project is price data. I collected data for price, volume,
+              and volatility from Binance API. This API provides continuous real-time data
+               in the desired time interval(E.g., daily, 1 hour,4 hours, etc.) for the 
+               specified period. (E.g., Four months of data)</p>
+            
+            <p>Collecting data from APIs gives the project a dynamic structure so the
+              results can be renewed with a proper pipeline as long as the fundamental
+               assumptions are kept.</p>
+            
+            <h3>Google Search Trends</h3>
+            <p><img src="assets/images/Bitcoin3.png" alt="Daily Google Search Trends" /></p>
+            <p><img src="assets/images/Bitcoin4.png" alt="Bitcoin Search Rates" /></p>
+
+            <p>Google Trends graph reflects the level of interest in Bitcoin for a specific time
+               interval and location. I collected data for the past 4 years over the world.</p>
+            
+            <p><img src="assets/images/Bitcoin5.png" alt="Bitcoin Search Rates" /></p>
+            <p>There seems to be a correlation between interest and price when the peaks of the 
+              charts are checked. It would be a mistake to think that search ratings only increase
+               as the price increases. Search ratings may spike when big drops in price happen 
+               because people get curious about what happened.
+
+            </p>
+
+            <p>
+              The data is collected using the pytrends library on python. Here is a small part 
+              of my code attributed to data collection through pytrends. The code is available 
+              on GitHub.
+            </p>
+
+            <script src="https://gist.github.com/YusufGulcan/1d59e2ec4b0458976327bf003a697194.js"></script>
+
+            <h3>Twitter Sentiment Analysis</h3>
+            <p>Another indicator of demand for Bitcoin is how the majority feel about Bitcoin.
+               If the expectations are positive, it can be assumed that the price will increase,
+                except for classic market manipulations.</p>
+              
+            <p>
+              To measure the sentiment about Bitcoin, I collected all tweets with more than 1000 
+              likes posted in English within the last 4 years. I filtered the tweets by the like 
+              numbers because there are millions of spam tweets on Twitter. Collecting spam tweets
+               would take a tremendous amount of time and damage the quality of the data.
+            </p>
+
+            <script src="https://gist.github.com/YusufGulcan/02899512c848d37420e5ca9247a4fadf.js"></script>
+
+            <p><img src="assets/images/Bitcoin6.png" alt="Bitcoin Search Rates" /></p>
+            <p>
+              After collecting the tweets, I measured the sentiment of each tweet in terms
+               of positivity and negativity by using an NLP algorithm called VADER. VADER returns
+                a numerical value between 1 and -1. This range represents the strength of positivity 
+                or negativity of the tweet. Numerical values are the optimal input type for machine
+                 learning algorithms.
+            </p>
+            <p><img src="assets/images/Bitcoin8.png" alt="Bitcoin Search Rates" /></p>
+            <p>
+              I grouped the data by day and summed the scores of each shared tweet on the same day.
+               This way, I got an aggregated numerical value representing the general sentiment each
+                day for Bitcoin.
+            </p>
+            <p><img src="assets/images/Bitcoin7.png" alt="Bitcoin Search Rates" /></p>
+
+            <p>
+              When the raw data was plotted, the chart was spiky and chaotic. I took 50
+               days average of the chart to smooth the output. Averaging the values revealed
+                the similarity between the price and sentiment score charts. Here is how 
+                the 50-period moving average chart of sentiment score looks.
+            </p>
+
+
+            <p><img src="assets/images/Bitcoin9.png" alt="" /></p>
+
+            <h3>Bitcoin Historical Prices</h3>
+
+            <p>
+              When the raw data was plotted, the chart was spiky and chaotic.
+               I took 50 days average of the chart to smooth the output. Averaging
+                the values revealed the similarity between the price and sentiment 
+                score charts. Here is how the 50-period moving average chart of sentiment
+                 score looks.
+            </p>
+            <script src="https://gist.github.com/YusufGulcan/2f8a7cb2d07248f8b9c013797566d2cd.js"></script>
+
+            <h3>Merge The Data Frames</h3>
+
+            <p>I had softcoded a ‘start_date’ and an ‘end_date’ for the time range I wanted to work on.
+               The data I collected from different sources were within the same range.
+            </p>
+            <p>‘start_date’ = Current date — 1500 days
+            </p>
+            
+            <p>‘end_date’ = Current date
+            </p>
+            <p>
+              Since the time interval was the same for each data frame, it was relatively easy to 
+              merge all into one data frame.
+              After the merge, I created a pipeline that creates a data matrix with the size n*k.
+               ‘k’ represents the number of features, and ’n’ represents the number of previous 
+               days I want to take data from.
+            </p>
+
+            <p><img src="assets/images/Bitcoin10.png" alt="" /></p>
+            <p>The features are Bitcoin price, Twitter sentiment score, and Google
+               search trend rating meaning that k is always 3 for this data frame.
+                E.g., If the matrix size is 14*3, the model takes data from the past 14
+                 days and uses these 52 pieces of data to make tomorrow’s price prediction.</p>
+            
+            <p>
+              The entire data frame includes 1500 rows; test and validation 
+              data frames are given 150 rows each.
+            </p>
+
+            <p>Train data = 1200 days
+
+            </p>
+
+            <p>Validation data = 150 days
+
+            </p>
+
+            <p>
+              Test data = 150 days
+            </p>
+
+            <h3>Modeling</h3>
+            <p>
+              Long Short Term Memory(LSTM) Neural Network is arguably the best
+               neural network type for making predictions on time-series data. This layer
+                can forget unnecessary old parts in data. However, it still remembers what
+                 happened in the past and frequently repeated patterns. With this, the strict
+                  structure of the old data, incompatible with the new data, is avoided.
+            </p>
+
+            <p>
+              After a quick explanation of how the neural network works, I leave the code here,
+            </p>
+
+            <script src="https://gist.github.com/YusufGulcan/85197c742fc18b5355c24951bf55baa8.js"></script>
+
+            <h3>Evaluate The Predictions</h3>
+            <p>
+              The predictions and real values are compared in the chart below. 
+              The chart shows 50 days of price action.
+            </p>
+            <p><img src="assets/images/Bitcoin11.png" alt="" /></p>
+            <p>
+              The matrix size that gives the minimum error is 7 * 3. For each prediction,
+               the model takes data from the previous 7 days, combines all three features of
+                these days, and estimates the next day’s price.
+            </p>
+            <p><img src="assets/images/Bitcoin12.png" alt="" /></p>
+
+            <p>
+              The scores on the test data when all features (‘Trends’, ’Sentiment’, ‘Price’)
+               are included;
+               <ul>
+                <li>Mean Squared Error: 1662883.374</li>
+                <li>Root Mean Squared Error: 1289.528</li>
+                <li>Mean Absolute Error: 963.547</li>
+                <li>Mean Absolute Percentage Error: 0.03782</li>
+                <li>R2 Score: 0.94821</li>
+               </ul>
+              These are the results running the model using the price data alone;
+               <ul>
+                <li>Mean Squared Error: 1103179.244</li>
+                <li>Root Mean Squared Error: 1050.323435787</li>
+                <li>Mean Absolute Error: 892.47843546</li>
+                <li>Mean Absolute Percentage Error: 0.0317484</li>
+                <li>R2 Score: 0.96432</li>
+               </ul>
+
+               After trying dozens of different parameter combinations, I managed to get the
+                best scores by running the model only on price data. Sentiment analysis and Google
+                 trends do not contribute to the model.
+            </p>
+
+            <h3>Conclusion</h3>
+            
+            <p>
+              This is a mini and simple demo of how to use different neural network algorithms
+               in conjunction. I used NLP algorithms for sentiment analysis and time-series 
+               forecasting algorithms to make price predictions.
+            </p>
+            
+            <p>
+              Although the sentiment analysis did not really contribute to the data,
+               the article can be helpful for similar works. Consulting technical analysts 
+               about price action mechanisms and getting domain knowledge may help in terms
+                of feature creation. Tuning parameters in detail can slightly increase the 
+                performance as well.
+            </p>
+            
+            
+            <h5>Suggestions from readers;</h5>
+            <ul>
+              <li>Adding economic indicators like FED interest rates, inflation rates, money supply rates</li>
+              <li>Market Whale Accumulation Data</li>
+              <li>Spent Output Profit Ratio (SOPR)
+              </li>
+              <li>Other On-Chain Data</li>
+              <li>Mining Costs</li>
+            </ul>
+
+            <blockquote>
+              Disclaimer: I do not recommend trading by the results of this model. The model is
+               not created for trading and is not tested for that purpose.
+            </blockquote>
+
+		</article>
+          <!-- /Article -->
+
+          <!-- Sidebar -->
+          <aside class="col-md-4 sidebar sidebar-left">
+            <div class="widget">
+              <h4>Lorem ipsum dolor sit</h4>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Facere, ratione delectus reiciendis nulla nisi pariatur
+                molestias animi eos repellat? Vel.
+              </p>
+            </div>
+            <div class="widget">
+              <h4>Lorem ipsum dolor sit</h4>
+              <ul>
+                <li><a href="">Lorem ipsum </a>dolor sit amet.</li>
+                <li>Nostrum, dolores labore tempore error.</li>
+                <li>Qui esse impedit vitae repellat.</li>
+                <li>Aliquam, laborum corporis molestiae nihil.</li>
+                <li>Voluptate, labore non adipisci nihil!</li>
+              </ul>
+            </div>
+          </aside>
+          <!-- /Sidebar -->
+        </div>
+      </div>
+      <!-- /container -->
+    </main>
+
+    <footer id="footer" class="topspace">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Contact</h3>
+            <div class="widget-body">
+              <p>
+                +90 543 364 35 26<br />
+                <a href="mailto:#">yusuf.gulcan@gmail.com</a><br />
+                <br />
+                Istanbul,TR, Etiler 34337
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Follow me</h3>
+            <div class="widget-body">
+				<p class="follow-me-icons">
+					<a href=""><i class="fa-brands fa-kaggle"></i></a>
+					<a href=""><i class="fa-brands fa-medium"></i></a>
+					<a href=""><i class="fa fa-github fa-2"></i></a>
+				  </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Text widget</h3>
+            <div class="widget-body">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque,
+                nihil natus explicabo ipsum quia iste aliquid repellat eveniet
+                velit ipsa sunt libero sed aperiam id soluta officia asperiores
+                adipisci maxime!
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque,
+                nihil natus explicabo ipsum quia iste aliquid repellat eveniet
+                velit ipsa sunt libero sed aperiam id soluta officia asperiores
+                adipisci maxime!
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Form widget</h3>
+            <div class="widget-body">
+              <p>
+                +234 23 9873237<br />
+                <a href="mailto:#">yusuf.gulcan0@gmail.com</a><br />
+                <br />
+                234 Hidden Pond Road, Ashland City, TN 37015
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- /row of widgets -->
+      </div>
+    </footer>
+
+    <footer id="underfooter">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 widget">
+            <div class="widget-body">
+              <p>234 Hidden Pond Road, Ashland City, TN 37015</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 widget">
+            <div class="widget-body">
+              <p class="text-right">
+                Copyright &copy; 2014, Your awesome name here<br />
+                Design:
+                <a href="http://www.gettemplate.com" rel="designer"
+                  >Initio by GetTemplate</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- /row of widgets -->
+      </div>
+    </footer>
+
+    <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="assets/js/template.js"></script>
+  </body>
+</html>
