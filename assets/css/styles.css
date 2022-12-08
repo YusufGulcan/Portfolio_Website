@@ -2,9 +2,9 @@ html {
   font-size: 100%;
 }
 body {
-  font-size: 15px;
-  font-size: 0.9375rem;
-  font-family: "Open sans", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  /* font-size: 0.9375rem; */
+  font-family: "Times New Roman", Helvetica, Arial, sans-serif;
   color: #666666;
   padding: 0;
 }
@@ -41,7 +41,7 @@ body {
   -moz-background-clip: padding;
   border-radius: 0;
   background-clip: padding-box;
-  font-family: "Open sans", Helvetica, Arial, sans-serif;
+  font-family: "Times New Roman", Helvetica, Arial, sans-serif;
   font-weight: 300;
   text-transform: uppercase;
 }
@@ -55,7 +55,7 @@ body {
   display: inline-block;
 }
 .navbar-collapse .navbar-nav > li > a {
-  padding: 20px 30px;
+  padding: 40px 50px;
 }
 .dropdown ul.dropdown-menu {
   top: 85%;
@@ -69,11 +69,11 @@ body {
   border-color: #cccccc;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #454545;
+  color: #000000;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #000000;
+  color: #005693;
   background-color: #ffffff;
 }
 .navbar-default .navbar-nav > .active > a,
@@ -167,7 +167,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Open sans", Helvetica, Arial, sans-serif;
+  font-family: "Times New Roman", Helvetica, Arial, sans-serif;
   font-weight: 400;
   color: #333333;
 }
@@ -225,7 +225,7 @@ a:hover {
 
 **********************************************************************/
 #head {
-  background: #f4f4f4 url(../images/background.jpg) top center;
+  background: #f4f4f4 url(../images/bg1.png) top center;
   background-size: cover;
   color: #7c7c7c;
   padding: 30px 0 35px 0;
@@ -239,7 +239,7 @@ a:hover {
   margin: 0 auto;
 }
 #head .title {
-  font-family: Alice, Georgia, serif;
+  font-family: Georgia, serif;
   font-size: 49px;
   font-size: 3.0625rem;
 }
@@ -288,13 +288,13 @@ img {
   font-size: 0.75rem;
   text-decoration: none;
   text-transform: uppercase;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Calibri", Helvetica, Arial, sans-serif;
   color: #333;
-  -webkit-border-radius: 0px;
+  -webkit-border-radius: 1px;
   -webkit-background-clip: padding-box;
   -moz-border-radius: 0px;
   -moz-background-clip: padding;
-  border-radius: 0px;
+  border-radius: 8px;
   background-clip: padding-box;
   -webkit-transition-property: all;
   -moz-transition-property: all;
@@ -306,19 +306,19 @@ img {
   -o-transition-duration: 0.2s;
   transition-duration: 0.2s;
   border: 0 none;
-  padding: 12px 35px;
+  padding: 20px 35px;
   text-shadow: 0 1px 0px #780d33;
 }
 .btn-primary {
   color: #fff;
-  background-color: #bd1550;
+  background-color: #005693;
 }
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
 .btn-primary.active {
   color: #fff;
-  background-color: #e61f65;
+  background-color: #000000;
 }
 .btn-action {
   font-weight: bold;
@@ -330,8 +330,8 @@ img {
 .btn-action:focus,
 .btn-action:active,
 .btn-action.active {
-  color: #bd1550;
-  border-color: #bd1550;
+  color: #005693;
+  border-color: #005693;
 }
 .btn-lg {
   padding: 15px 60px;
@@ -357,16 +357,16 @@ img {
   margin: 0;
 }
 .panel-cta .panel-body {
-  padding: 35px;
+  padding: 15px;
 }
 /* Section - Featured */
 .featured {
   font-size: 13px;
-  font-size: 0.8125rem;
+  font-size: 0.9525rem;
 }
 .featured h3 {
-  font-weight: bold;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-family: "Calibri(Body)", Helvetica, Arial, sans-serif;
   font-size: 24px;
   font-size: 1.5rem;
   text-transform: uppercase;
@@ -449,8 +449,8 @@ img {
   font-size: 12px;
   font-size: 0.75rem;
   text-transform: uppercase;
-  text-shadow: 0 1px 0px #780d33;
-  background: #bd1550;
+  text-shadow: 0 1px 0px #5d6272;
+  background: #005693;
   color: white;
 }
 .thumbnail img {
@@ -542,10 +542,10 @@ img {
 }
 .entry-header .entry-meta {
   text-align: center;
-  font-family: Georgia, serif;
+  font-family: "Times New Roman", serif;
   font-size: 18px;
   font-size: 1.125rem;
-  font-style: italic;
+  font-style: normal;
   font-weight: normal;
   color: #a5a5a5;
   margin: 0 0 15px 0;
@@ -750,7 +750,7 @@ footer.entry-meta .meta-in {
 **********************************************************************/
 #footer {
   background: #232323;
-  padding: 30px 0 0 0;
+  padding: 20px 0 0 0;
   font-size: 12px;
   color: #999;
 }
@@ -765,11 +765,11 @@ footer.entry-meta .meta-in {
   font-size: 0.9375rem;
   text-transform: uppercase;
   color: #ccc;
-  margin: 0 0 20px;
+  margin: 0 0 10px;
 }
 #underfooter {
   background: #191919;
-  padding: 15px 0;
+  padding: 10px 0;
   color: #777;
   font-size: 12px;
 }

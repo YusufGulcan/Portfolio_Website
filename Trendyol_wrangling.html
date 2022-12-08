@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="Sergey Pozhilov (GetTemplate.com)" />
+	<script
+      src="https://kit.fontawesome.com/2da17f74f6.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>
+      Bitcoin Price Predictions
+    </title>
+
+    <link rel="shortcut icon" href="assets/images/icon.png" />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Icon font -->
+    <link
+      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+      rel="stylesheet"
+    />
+    <!-- Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700"
+    />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header id="header">
+      <div id="head" class="parallax" parallax-speed="1">
+        <h1 id="logo" class="text-center">
+          <span class="title">Yusuf Gulcan</span>
+          <span class="tagline"
+            >Data Scientist<br />
+        </h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button
+              type="button"
+              class="navbar-toggle"
+              data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1"
+            >
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span> <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="index.html">Home</a></li>
+              <li class="active"><a href="about.html">About</a></li>
+              
+              <li><a href="blog.html">Blog</a></li>
+            </ul>
+          </div>
+          <!--/.nav-collapse -->
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <div class="container">
+        <div class="row topspace">
+          <!-- Article main content -->
+          <article class="col-sm-8 maincontent">
+            <header class="page-header">
+              <h1 class="page-title">
+                Part 2 — Data Wrangling And Visualization
+              </h1>
+            </header>
+            <p>This is part 2 of my end-to-end data science project. The last article was about collecting data through Beautifulsoup. I will explain how to process the data in this article. Here is the link for part 1.</p>
+            <p>After saving the data into CSV, I start working on it using Jupyter Notebook. Since this is real data, it is full of null, cracked, and partial data. I need to process it to make it appropriate for the presentation and later for machine learning algorithms.</p>
+            <p>The raw data looks like this:
+            </p>
+            <img src="assets/images/tw1.png" alt="">
+            <p></p>
+            <p>At first glance, the scraping does not look so successful in gathering CPU and Battery Power values. The reason might be the messy structure of the website or that I made mistakes in writing my scrape code. Nevertheless, I still need to use the data, so I need to patch it up. First, I drop the ‘Unnamed: 0 ‘, ‘Links’, and ‘Battery Power’ columns because I think they are not helpful.</p>
+            <p></p>
+            <img src="assets/images/tw2.png" alt="">
+
+            <pre><code>df.drop(columns=[‘Unnamed: 0’], axis= 1, inplace=True)
+              df.drop(columns = ['Link','Battery Power'],axis=1,inplace=True) </code></pre>
+            <p>To fill the null values on the CPU column, I searched the CPU values for each phone model and assigned what I found on the internet to the corresponding rows.</p>
+
+            <pre><code>pp = df.loc[(df.Brand==’Apple’)&(df.CPU.isna()==True)&(df.Model.str.contains(‘13’)==True),’Model’].index 
+              df.loc[pp,’CPU’] = 3.2
+              rr = df.loc[(df.Brand=='Apple')& (df.CPU.isna()==True)&(df.Model.str.contains('S')),'Model'].index
+              df.loc[rr,'CPU'] = 2.6
+              tt = df.loc[(df.Brand=='Apple')& (df.CPU.isna()==True)&(df.Model.str.contains('12')),'Model'].index
+              df.loc[tt,'CPU'] = 3.2
+              df.loc[tt]
+              df.loc[(df.Brand=='Apple') & (df.CPU.isna()==True),'CPU'] = 2.8</code></pre>
+
+            <p>I finished filling the null CPU values on Apple products. It did not take long because there are relatively fewer Apple models.
+              I do the same for Samsung, Huawei, and Xiaomi because those are the most dominant brands.
+              Setting values is a way to make use of data with a lot of null values. Some analysts fill nulls with mean, median, or mode values. Some completely drop the rows with nulls. However, If you know the value or you can reach the specific value, just set it.
+              Another problem is the ‘Color’ column which includes partial Turkish values. I need to convert that column into English.</p>
+
+            <pre><code>colors  = {'Siyah':'Black','Mavi':'Blue','Beyaz':'White','Ye':'Green','Gri':'Gray','Mor':'Purple','K':'Red',              'Alt':'Golden','Pembe':'Pink','Sar':'Yellow','Turuncu':'Orange','Metalik':'Metallic','Lacivert':'Blue',                'Turkuaz':'Turquoise','Bej':'Cream','Bordo':'Red','Kahverengi':'Brown'}</code></pre>
+
+            <p>I create a dictionary for each unique value in the color column to convert the values. There is no shortcut for this, you need to do it manually. This is an example of why data wrangling is the most time-taking step of data analysis.</p>
+            
+            <pre><code>brands=df.groupby('Brand').count().sort_values('Model',ascending=False).index[:10]
+              df =df.loc[df.Brand.isin(brands)==True]</code></pre>
+            
+            <p>The data includes many brands with no recognition. I want to cut them off because I want my analysis to be relevant to the real world. Therefore, I only choose the 10 most common brands. Others are mostly mislabeled products on the website.</p>
+            
+            <img src="assets/images/tw3.png" alt="">
+            <p></p>
+            <p>The most common brands on the website are Samsung, Xiaomi, and Apple. Other brands are simply not in demand. %73 of the products are from these three brands.</p>
+
+            <p>According to the data, if we would create a smartphone from the most common features it would be a Black Android 6-inch Samsung with 4 GB RAM,128 GB Storage, 2.3 GHz CPU, and 12 MP camera resolution.</p>
+            
+            <img src="assets/images/tw4.png" alt="">
+
+
+            <p>There is a deep accumulation between 3500 and 7000 Turkish liras in terms of price. When the products are sorted by ‘brand’, we see that most brands offer products where the accumulation zone is.</p>
+
+            <img src="assets/images/tw5.png" alt="">
+
+            <p>Apple products are insurgent to the market norms. The average price of Apple products is 23,819 liras whereas the average of the rest of the market is only 6,431 liras.</p>
+            
+            <img src="assets/images/tw6.png" alt="">
+
+            <p>It is a huge difference. I want to check if the difference comes from hardware capacity. I create a set of scatter plots to see the place of the Apple products compared to others.</p>
+            <img src="assets/images/tw7.png" alt="">
+            <p></p>
+            <p>The graphs show us that the price difference, which is almost 3X, is not reflected in the hardware capacity. Apple products are still with the highest hardware capacity overall, but there is not as much difference.</p>
+
+            <p>The distribution of the smartphones on the several feature axes, as opposed to price, looks like this:</p>
+            <img src="assets/images/tw8.png" alt="">
+            <p></p>
+            <pre><code>df['Hardware'] = df.RAM * df.Storage * df.CPU * df['Screen Size'] 
+              df['Price/Hardware'] = df.Hardware / df.Price</code></pre>
+            <p></p>
+            <p>I create two new columns named ‘Hardware Capacity’ by simply multiplying the feature values for each product. I also calculated the price paid per hardware unit. Here is the table of mean values per brand sorted by Price/Hardware:</p>
+            
+            <img src="assets/images/tw9.png" alt="">
+
+            <p>I add the correlation chart by reminding you that ‘correlation does not necessarily mean causation.</p>
+            
+            <img src="assets/images/tw10.png" alt="">
+
+            <p>We see that price is in a strong correlation with CPU. Storage comes second, and third, RAM is weakly correlated with price.</p>
+
+            <p>Finally, I created a PowerBI dashboard assuming that all products can be sold at current prices. <a href="https://app.powerbi.com/groups/me/reports/8210a11f-7cff-4325-b1cc-bee902817b99/ReportSection">Here</a>  is a preview;</p>
+            
+            <img src="assets/images/t11.png" alt="">
+            <p></p>
+            <p>This article shows the highlights of my data analysis. I did not have a chance to show everything I did in the article. I hope it is still helpful. You can access the full code  <a href="https://github.com/YusufGulcan/EDA-and-Viz">here</a></p>
+
+
+
+
+
+
+            
+
+
+            
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              </article>  
+          <!-- /Article -->
+
+          <!-- Sidebar -->
+          <aside class="col-md-4 sidebar sidebar-left">
+            <div class="widget">
+              <h4>Lorem ipsum dolor sit</h4>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Facere, ratione delectus reiciendis nulla nisi pariatur
+                molestias animi eos repellat? Vel.
+              </p>
+            </div>
+            <div class="widget">
+              <h4>Lorem ipsum dolor sit</h4>
+              <ul>
+                <li><a href="">Lorem ipsum </a>dolor sit amet.</li>
+                <li>Nostrum, dolores labore tempore error.</li>
+                <li>Qui esse impedit vitae repellat.</li>
+                <li>Aliquam, laborum corporis molestiae nihil.</li>
+                <li>Voluptate, labore non adipisci nihil!</li>
+              </ul>
+            </div>
+          </aside>
+          <!-- /Sidebar -->
+        </div>
+      </div>
+      <!-- /container -->
+    </main>
+
+    <footer id="footer" class="topspace">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Contact</h3>
+            <div class="widget-body">
+              <p>
+                +90 543 364 35 26<br />
+                <a href="mailto:#">yusuf.gulcan@gmail.com</a><br />
+                <br />
+                Istanbul,TR, Etiler 34337
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Follow me</h3>
+            <div class="widget-body">
+				<p class="follow-me-icons">
+          <a href="https://www.linkedin.com/in/yusufgulcan?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B2utAC4BsTIynV%2BOPWiSc0Q%3D%3D"><i class="fa fa-linkedin"></i></a>
+					<a href="https://www.kaggle.com/yusufglcan/code?userId=10645419&sortBy=dateRun&tab=bookmarked"><i class="fa-brands fa-kaggle"></i></a>
+					<a href="https://medium.com/@yusufgulcan"><i class="fa-brands fa-medium"></i></a>
+					<a href="https://github.com/YusufGulcan?tab=repositories"><i class="fa fa-github fa-2"></i></a>
+				  </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Disclaimer</h3>
+            <div class="widget-body">
+              <p>
+                This is my personal website designed to exhibit my project portfolio.
+                No other goal is intended. All Rights Reserved. 
+              </p>
+      
+            </div>
+          </div>
+      </div>
+    </footer>
+
+
+    <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="assets/js/template.js"></script>
+  </body>
+</html>

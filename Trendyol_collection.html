@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="Sergey Pozhilov (GetTemplate.com)" />
+	<script
+      src="https://kit.fontawesome.com/2da17f74f6.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>
+      Bitcoin Price Predictions
+    </title>
+
+    <link rel="shortcut icon" href="assets/images/icon.png" />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Icon font -->
+    <link
+      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+      rel="stylesheet"
+    />
+    <!-- Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700"
+    />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header id="header">
+      <div id="head" class="parallax" parallax-speed="1">
+        <h1 id="logo" class="text-center">
+          <span class="title">Yusuf Gulcan</span>
+          <span class="tagline"
+            >Data Scientist<br />
+        </h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button
+              type="button"
+              class="navbar-toggle"
+              data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1"
+            >
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span> <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="index.html">Home</a></li>
+              <li class="active"><a href="about.html">About</a></li>
+              
+              <li><a href="blog.html">Blog</a></li>
+            </ul>
+          </div>
+          <!--/.nav-collapse -->
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <div class="container">
+        <div class="row topspace">
+          <!-- Article main content -->
+          <article class="col-sm-8 maincontent">
+            <header class="page-header">
+              <h1 class="page-title">
+                Part 1 — Data Collection utilizing Python BeautifulSoup Library
+              </h1>
+            </header>
+            <p>Lastly, I have done a project that requires collecting, wrangling, and visualizing data. I will only share the data collection step in this article in detail. Check out my medium profile to see the other steps.
+            </p>
+            <p>The project goal is to collect data about smartphones to understand the situation in the Turkish market. I choose Trendyol.com, one of the most popular e-commerce retail web stores in Turkey.
+            </p>
+            <p>First I asked myself; How detailed/What kind of information do I want?</p>
+            <p>I would like to have every piece of detail about products but it is not realistic. So I target the most critical and most reachable information. I want a list of data containing CPU, RAM, Storage, Screen size, Camera Resolution, Color, Operating System, Brand name, Model, and Price for each product.
+
+            </p>
+            <p>Now that I know what I want, I need a plan to follow. I checked the structure of the website. I browsed until I get to the section where all smartphones are listed. However, the list page includes only a limited amount of information about the product, such as brand name, model name, price, and storage. Whereas, I want to get information about more features like color, CPU, RAM, screen size, and camera resolution.</p>
+
+            <p>In this case, I need to extract the links for each product page and then write a script to gather all the information I want from the links on the list page. The list page looks like this:</p>
+
+              <img src="assets/images/tt1.png" alt="">
+            <p>A product page contains a section like this:</p>
+            <p>After looking at the structure, I start coding to get the links for each product page from the main category page. After collecting the data for each product, I want to store the data in lists so that I can use the data to generate a pandas data frame.</p>
+            <pre><code>import pandas as pd
+              import csv
+              import requests
+              from bs4 import BeautifulSoup
+              import re</code></pre>
+            
+            <p>So I first import all necessary libraries for the project. I need pandas to create a data frame, CSV to convert it to a CSV file, requests to make requests, BeautifulSoup to parse HTML, and re(regex) to find patterns in the HTML.</p>
+            <p>Then I add my try and except conditions not to stop the entire process in case an error occurs in the loop, which mostly happens when the requested data piece is missing.</p>
+            <p>After that, I create my lists. I plan to store the different data types separately in these lists.</p>
+            <pre><code>try:
+              linklist = []  
+              Ramlist = []
+              BatteryPowerlist = []
+              Storagelist = []
+              Screensizelist = []
+              CameraResolutionlist = []
+              OperatingSystemlist = []
+              Colorlist = []
+              CPUlist = []
+              Pricelist = []
+              Modellist = []
+              brandlist = []</code></pre>
+            
+
+
+            <p>I send a ‘request’ to get a response from the website. After confirming it works, I create a soup by processing the ‘response’ using the Beautifulsoup function.</p>
+            <pre><code>for num in range(1, pagenum):
+              url = f'https://www.trendyol.com/akilli-cep-telefonu-x-c109460?pi={num}' 
+              response = requests.get(url)
+              soup = BeautifulSoup(response.text, 'html.parser')
+              Phones = soup.find_all('div', class_='p-card-wrppr')
+            </code></pre>
+            
+            
+              
+            <p>I also cover this part with a python loop to get information from multiple pages. The URL includes the page number -which can be seen in the brackets ‘{ }’ -for search results which I can manipulate by a range loop.</p>
+            <p>After parsing the HTML with Beautifulsoup I look for the specific location that includes the product page link. </p>
+            <img src="assets/images/tt2.png" alt="">
+            
+            <p>Since it is a result page, there are many links under the same href tag.</p>
+            <p>So I target all tags by using the ‘find_all’ function of the BeautfiulSoup library and create another loop to reach all of them.</p>
+            <pre>
+              <code>            for each in Phones:
+                link = each.find('div', class_='p-card-chldrn-cntnr').a[
+                    'href']  # First I had to find the links for individual product pages in the search result page.
+                link = f'https://www.trendyol.com{link}'
+                linklist.append(link)
+                print(link)
+  
+                response1 = requests.get(link)  # Then I created another soup for product-specific data.
+                soup1 = BeautifulSoup(response1.text, 'html.parser')
+                data = soup1.find('ul', class_='detail-attr-container').text</code>
+            </pre>
+            
+            <p>As I get product-specific page links one by one, I get information from those pages. I use created the same process of HTML parsing by using the links.</p>
+            <p>My target in the product-specific pages is the section where product specifications are listed. Here is what that section looks like:</p>
+            <p>The specific code above returns plain text, so I can find patterns in the text and get the info I need.</p>
+            <img src="assets/images/tt3.png" alt="">
+
+            <p>The specific code above returns plain text, so I can find patterns in the text and get the info I need.</p>
+            <img src="assets/images/tt4.png" alt="">
+
+            <p>Frankly, this is not the ideal way to get the information because you generally would like to target specific tags to get specific data pieces. But the pages are not structured in that way, instead, the lists of specifications shown above are bagged under one tag so targeting a specific piece of information is impossible.</p>
+            <pre><code>rammatch = re.search('tesi ([1-90])',data)
+                      
+              if rammatch: 
+                  RAM = rammatch.group(1)
+              else:
+                  RAM = None
+              Ramlist.append(RAM)</code></pre>
+            
+
+            <p>I utilize regular expression to mine data from the text patterns. I will not put all the code lines I wrote to get each product specification. For example, this is how I extracted RAM data from the text.</p>
+            <p>So I did similar things for all product features except for price and brand. Because these data are tagged specifically and relatively easy to reach. The code for price info is as follows;
+
+            </p>
+            <pre><code>price = soup1.find('span',class_='prc-dsc').text.strip()  
+              price = price[:-2].replace('.', '') 
+              price = price.split(',')[0]
+              Pricelist.append(price)</code></pre>
+            
+
+            <p>I also modified the output format because it included commas and the currency sign.
+
+            </p>
+
+            <p>After writing a script for each feature, I collected the data into a pandas data frame and added a Value error exception.</p>
+            <pre><code>specifications = {'Model': Modellist,
+              # I gathered all of my data in a dictionary and created a pandas dataframe.
+              'Brand': brandlist,
+              'Price': Pricelist,
+              'CPU': CPUlist,
+              'RAM': Ramlist,
+              'Storage': Storagelist,
+              'Operating System': OperatingSystemlist,
+              'Camera Resolution': CameraResolutionlist,
+              'Screen Size': Screensizelist,
+              'Battery Power': BatteryPowerlist,
+              'Color': Colorlist,
+              'Link': linklist
+              }
+
+              df = pd.DataFrame(specifications)
+              df.to_csv(
+              'Trendyol_detailed33.csv')  # I have written the dataframe into a csv file to be processed using the Jupyter Notebook.
+
+              except ValueError as e:
+              print(e)</code></pre>
+              <p>I converted the data into a CSV file to further processing. Finally, I covered the entire code with a function that takes the number of pages to scrape as the argument.</p>
+              <p>The general structure is like this;</p>
+
+              <pre><code>def Trendyoldata(pagenum): 
+
+                try:
+                    ...
+                except ValueError as e:
+                    print(e)
+            
+            Trendyoldata(pagenum)</code></pre>
+            <p>This article covers the data collection stage of my project. Data wrangling and data visualization are also explained on my medium page.</p>
+            <p> <a href="https://github.com/YusufGulcan/Webscraping">Here</a> you can download the file of the script.</p>
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              </article>  
+          <!-- /Article -->
+
+          <!-- Sidebar -->
+          <aside class="col-md-4 sidebar sidebar-left">
+            <div class="widget">
+              <h4>Lorem ipsum dolor sit</h4>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Facere, ratione delectus reiciendis nulla nisi pariatur
+                molestias animi eos repellat? Vel.
+              </p>
+            </div>
+            <div class="widget">
+              <h4>Lorem ipsum dolor sit</h4>
+              <ul>
+                <li><a href="">Lorem ipsum </a>dolor sit amet.</li>
+                <li>Nostrum, dolores labore tempore error.</li>
+                <li>Qui esse impedit vitae repellat.</li>
+                <li>Aliquam, laborum corporis molestiae nihil.</li>
+                <li>Voluptate, labore non adipisci nihil!</li>
+              </ul>
+            </div>
+          </aside>
+          <!-- /Sidebar -->
+        </div>
+      </div>
+      <!-- /container -->
+    </main>
+
+    <footer id="footer" class="topspace">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Contact</h3>
+            <div class="widget-body">
+              <p>
+                +90 543 364 35 26<br />
+                <a href="mailto:#">yusuf.gulcan@gmail.com</a><br />
+                <br />
+                Istanbul,TR, Etiler 34337
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Follow me</h3>
+            <div class="widget-body">
+				<p class="follow-me-icons">
+          <a href="https://www.linkedin.com/in/yusufgulcan?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B2utAC4BsTIynV%2BOPWiSc0Q%3D%3D"><i class="fa fa-linkedin"></i></a>
+					<a href="https://www.kaggle.com/yusufglcan/code?userId=10645419&sortBy=dateRun&tab=bookmarked"><i class="fa-brands fa-kaggle"></i></a>
+					<a href="https://medium.com/@yusufgulcan"><i class="fa-brands fa-medium"></i></a>
+					<a href="https://github.com/YusufGulcan?tab=repositories"><i class="fa fa-github fa-2"></i></a>
+				  </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Disclaimer</h3>
+            <div class="widget-body">
+              <p>
+                This is my personal website designed to exhibit my project portfolio.
+                No other goal is intended. All Rights Reserved. 
+              </p>
+      
+            </div>
+          </div>
+
+    
+      </div>
+    </footer>
+
+    <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="assets/js/template.js"></script>
+  </body>
+</html>

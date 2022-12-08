@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="Sergey Pozhilov (GetTemplate.com)" />
+	<script
+      src="https://kit.fontawesome.com/2da17f74f6.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>
+      Bitcoin Price Predictions
+    </title>
+
+    <link rel="shortcut icon" href="assets/images/icon.png" />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Icon font -->
+    <link
+      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+      rel="stylesheet"
+    />
+    <!-- Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700"
+    />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header id="header">
+      <div id="head" class="parallax" parallax-speed="1">
+        <h1 id="logo" class="text-center">
+          <span class="title">Yusuf Gulcan</span>
+          <span class="tagline"
+            >Data Scientist<br />
+        </h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button
+              type="button"
+              class="navbar-toggle"
+              data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1"
+            >
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span> <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="index.html">Home</a></li>
+              <li class="active"><a href="about.html">About</a></li>
+              
+              <li><a href="blog.html">Blog</a></li>
+            </ul>
+          </div>
+          <!--/.nav-collapse -->
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <div class="container">
+        <div class="row topspace">
+          <!-- Article main content -->
+          <article class="col-sm-8 maincontent">
+            <header class="page-header">
+              <h1 class="page-title">
+                Collect, Clean and Visulize Data
+              </h1>
+            </header>
+
+           
+
+            <p>Collecting, Processing, and Visualizing Data
+              I want to share one of my little data analysis projects. I collected data about the smartphone market in Turkey to see the general situation and make deductions regarding the factors affecting the prices.
+              
+              
+              
+              </p>
+              <p>The first step is collecting data:</p>
+              <p>
+                I collected the data from Trendyol.com, one of the most popular e-commerce retailer websites in Turkey. I utilized the BeautifulSoup library of Python programming language to get the data from the target website. The data includes over 1000 products from different brands. I was interested in smartphones, so I browsed through the categories until I reached the point where smartphones were listed. Then I inspected the page and started coding. I will not go deep with technical knowledge since this content mainly aims for presentation. You can get the data by clicking here.
+                </p>
+                <p>The list looks like this:</p>
+                <p><img src="assets/images/Trendyol1.png" alt="" /></p>
+                <p></p>
+                <p>I needed not only the information present on the list page but more. So I plan to collect the links for the individual product pages and get detailed information from product-specific pages. The following image is an example of a product-specific page;</p>
+
+                <img src="assets/images/Trendyol2.png" alt="">
+                <p>Opposing the list page, I can find detailed information about the product on this page, like RAM, Storage, CPU, Screen Size, and Camera Resolution.</p>
+                <p>I wrote a couple of code lines in Python to get these features. My web scraping code looks like this;</p>
+                <img src="assets/images/Trendyol3.png" alt="">
+                <p>The whole code is on Kaggle.com. You can access it here.
+                  </p>
+                <p>As I gathered information under different categories, I collected them in lists. Later I used those lists to create a Pandas Dataframe and converted the data frame into a CSV file.</p>
+                <img src="assets/images/Trendyol4.png" alt="">
+                <p>The second step is data cleaning and data optimization.</p>
+                <p>After this point, data cleaning, manipulation, and optimization started. I executed these steps on Jupyter Notebook since it proposes a better user interface for such purposes.</p>
+
+               <img src="assets/images/Trendyol5.png" alt="">
+
+               <p>I collected information under 12 categories I thought I needed, to extract meaningful insights.
+                </p>
+                <p>However, the data is not in ideal shape; there are missing values and irrelevant data. Besides, it includes data in Turkish. I needed to translate them into English with code.</p>
+                <p>First, I removed the rows with missing names or brands. Because I think these parts of the rows are the most important ones for me to use.</p>
+                <p>Some data did not need to be removed entirely. Some data mixed with other values under the wrong columns, so I cleaned the dirty parts.</p>
+                <p>I uploaded the code lines I used during data processing on the same Kaggle page. Data cleaning takes a big deal of time.</p>
+                <p>After working on the data, I reached the point where I think it was good enough to extract meaning. Here is how the data looks;</p>
+                
+                <img src="assets/images/Trendyol6.png" alt="">
+                <p></p>
+
+                <p>I loaded the data frame on the Tableau tool, which is a data visualization tool where you can generate dynamic/live data presentations. You can see the live charts here.</p>
+                <p>I created a couple of worksheets on the tool; I compared the number of products offered to the market and the total valuation of their offerings. (The whole market refers to the data frame).</p>
+
+                <img src="assets/images/Trendyol7.png" alt="">
+
+                <p>The first chart shows the number of products per brand. The second one is the evaluation of the brands in the market. These two charts show us that there is a discrepancy between the product numbers and the total worth of the products. Apple is heavily dominating the market with only 17 percent of the products listed.</p>
+
+                <img src="assets/images/Trendyol8" alt="">
+
+                <p>Apple products obviously show a great deal of divergence with regards to price. Therefore, to make the difference more visible, I created a chart showing the prices charged by brands for each unit of RAM, CPU, and Storage. It turns out that Apple charges 2–3 times more for one unit of hardware capacity compared to its closest competitor, Samsung.</p>
+
+                <img src="assets/images/Trendyol10.png" alt="">
+
+                <p>Apple products obviously show a great deal of divergence with regards to price. Therefore, to make the difference more visible, I created a chart showing the prices charged by brands for each unit of RAM, CPU, and Storage. It turns out that Apple charges 2–3 times more for one unit of hardware capacity compared to its closest competitor, Samsung.</p>
+                <img src="assets/images/Trendyol11" alt="">
+                <p></p>
+
+                <p>Price seems to be in positive correlation with CPU and Storage, but it is relatively weak to explain the substantial price gap.</p>
+
+                <p>However, I have qualitative data that draws a clear line between these groups. The data about operating system… When I averaged the prices paid for two groups, I saw that it cuts the data frame into two just like the price gap. Price paid for an average product run by iOS is almost 4 times more.</p>
+                <img src="assets/images/Trendyol12.png" alt="">
+
+                <p>For confirmation, I applied the one-hot encoding method to the data and calculated the correlation of the operating systems. The correlation is, as expected, very strong;</p>
+
+                <img src="assets/images/Trendyol13.png" alt="">
+
+                <p>Besides that, I generated the correlation chart only for the products running on the same OS to eradicate the effect of the dominant impact of the operating systems and the hardware difference started making sense. The hardware correlation greatly increased within the Apple products. This situation shows that the operating system is the more prominent factor than hardware capacity for price determination, overshadowing every other variable.</p>
+
+                <img src="assets/images/Trendyol14.png" alt="">
+
+                <p>On the other hand, the only iOS user brand is Apple; it is crucial not to neglect the possibility that Apple’s brand value pushes the prices up but not the operating system. I do not have enough data to measure the brand value of Apple. I still can derive a counter hypothesis against that statement.</p>
+
+                <p>If we test this hypothesis from the negative approach, which means checking the prices among the products run by Android but offered by different brands, we could conclude that the brand value does not matter much among the products run by Android. The prices with the same hardware lurk in the same range, even if the brand value varies greatly.</p>
+
+                <p>To conclude, iOS claims superiority over Android in the eyes of users in Turkey. The UX, the UI, or the design offered by iOS might be making the difference. We could refer to iOS as a competitive advantage for Apple. Focusing on software development and differentiating the products in this regard looks more profitable than lowering the costs of tangible materials.</p>
+
+                <p>In other words, developing better software is another way to create efficiency, in this case, which means offering a higher perceived value to the customer by using the same or similar material. The competition level reaches the sky when it comes to intangible assets like software. Therefore, the profitability and price for that asset are determined accordingly. This data frame shows that businesses should allocate more resources for software development.</p>
+
+                
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              </article>  
+          <!-- /Article -->
+
+          <!-- Sidebar -->
+          <aside class="col-md-4 sidebar sidebar-left">
+            <div class="widget">
+              <h4>Lorem ipsum dolor sit</h4>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Facere, ratione delectus reiciendis nulla nisi pariatur
+                molestias animi eos repellat? Vel.
+              </p>
+            </div>
+            <div class="widget">
+              <h4>Lorem ipsum dolor sit</h4>
+              <ul>
+                <li><a href="">Lorem ipsum </a>dolor sit amet.</li>
+                <li>Nostrum, dolores labore tempore error.</li>
+                <li>Qui esse impedit vitae repellat.</li>
+                <li>Aliquam, laborum corporis molestiae nihil.</li>
+                <li>Voluptate, labore non adipisci nihil!</li>
+              </ul>
+            </div>
+          </aside>
+          <!-- /Sidebar -->
+        </div>
+      </div>
+      <!-- /container -->
+    </main>
+
+    <footer id="footer" class="topspace">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Contact</h3>
+            <div class="widget-body">
+              <p>
+                +90 543 364 35 26<br />
+                <a href="mailto:#">yusuf.gulcan@gmail.com</a><br />
+                <br />
+                Istanbul,TR, Etiler 34337
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Follow me</h3>
+            <div class="widget-body">
+				<p class="follow-me-icons">
+          <a href="https://www.linkedin.com/in/yusufgulcan?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B2utAC4BsTIynV%2BOPWiSc0Q%3D%3D"><i class="fa fa-linkedin"></i></a>
+					<a href="https://www.kaggle.com/yusufglcan/code?userId=10645419&sortBy=dateRun&tab=bookmarked"><i class="fa-brands fa-kaggle"></i></a>
+					<a href="https://medium.com/@yusufgulcan"><i class="fa-brands fa-medium"></i></a>
+					<a href="https://github.com/YusufGulcan?tab=repositories"><i class="fa fa-github fa-2"></i></a>
+				  </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Disclaimer</h3>
+            <div class="widget-body">
+              <p>
+                This is my personal website designed to exhibit my project portfolio.
+                No other goal is intended. All Rights Reserved. 
+              </p>
+      
+            </div>
+          </div>
+      </div>
+    </footer>
+
+
+    <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="assets/js/template.js"></script>
+  </body>
+</html>

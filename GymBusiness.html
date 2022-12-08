@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="Sergey Pozhilov (GetTemplate.com)" />
+	<script
+      src="https://kit.fontawesome.com/2da17f74f6.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>
+      Bitcoin Price Predictions
+    </title>
+
+    <link rel="shortcut icon" href="assets/images/icon.png" />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Icon font -->
+    <link
+      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+      rel="stylesheet"
+    />
+    <!-- Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700"
+    />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header id="header">
+      <div id="head" class="parallax" parallax-speed="1">
+        <h1 id="logo" class="text-center">
+          <span class="title">Yusuf Gulcan</span>
+          <span class="tagline"
+            >Data Scientist<br />
+        </h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button
+              type="button"
+              class="navbar-toggle"
+              data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1"
+            >
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span> <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="index.html">Home</a></li>
+              <li class="active"><a href="about.html">About</a></li>
+              
+              <li><a href="blog.html">Blog</a></li>
+            </ul>
+          </div>
+          <!--/.nav-collapse -->
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <div class="container">
+        <div class="row topspace">
+          <!-- Article main content -->
+          <article class="col-sm-8 maincontent">
+            <header class="page-header">
+              <h1 class="page-title">
+                Solving a Business Problem with Machine Learning
+              </h1>
+            </header>
+			<p>Assume that you are an entrepreneur and want to launch a new 
+				business but do not know where. It is a critical decision because
+				 the characteristics of the chosen area directly affect the survival
+				  chance of your business at the beginning and its profitability later on.</p>
+
+			<p>I will tell you how you can utilize data science techniques to find
+				 an answer to this problem by walking through one of my projects.</p>
+            
+			<img src="assets/images/Gym1.jpg" alt="">
+
+			<h3>Business Problem:</h3>
+			<p>
+				An entrepreneur would like to launch a gym business in central Toronto, Canada,
+				 and s/he would like to know which neighborhood would be the best place for such
+				  an investment.
+			</p>
+			<h3>Ideas For Possible Solutions</h3>
+			<p>
+				Market research is a must before making a new investment and launching a new
+				 product. So this is how I start the project. I need to collect information under 
+				 the metrics of classic market research activities.
+			</p>
+
+			<p>
+				As an individual researcher, I do not have the budget for surveys or questionnaires.
+				 It is best to rely on ready-to-use official data which is decent enough to give an
+				  idea about the situation.
+			</p>
+
+			<p>
+				Generally, market research metrics revolve around the demand, market size, economic wellbeing,
+				 and other sociological realities like cultural and religious background and crime 
+				 rate. Therefore, it is best to gather information for every subtitle of market research.
+			</p>
+
+			<p>
+				I chose my metrics to be the customer potential(size of the target audience),
+				 competition level, and income level of the neighborhood. Another big factor would
+				  be the security level of the neighborhood.
+			</p>
+
+			<p>
+				The metrics above rely on the simplest business realities. Let me explain;
+			</p>
+
+			<p><b>Customer Potential:</b>
+			</p>
+			<p>
+				No business is sustainable without a demand for its products or services. Therefore,
+				 every business should have an idea about the demand in the market. Customer potential is
+				  the primary metric measuring the potential demand.
+			</p>
+
+			<p>
+				In this case, the demographics of gym subscribers gain importance. Statistics show that the majority of gym subscribers are between 15 – 45 years old. It is a good idea to consider the population between the mentioned age range as the primary target for the business.
+			</p>
+
+			<p><b>Competition Level</b></p>
+
+			<p>This is a very straightforward factor, sales of a business would be negatively affected by any type of competitor. If competition is high in a market, it is generally better to avoid launching a product/business in that market. Substitutes should also be taken into consideration which may dry the demand out of the market.</p>
+
+			<p>
+				For gym subscribers, the substitutes would be green spaces, parks, and running trails that they can use to do sports instead of going to a gym. Collecting data about the alternatives to the business adds another dimension to the analysis.
+			</p>
+
+			<p><b>Income Level:</b></p>
+
+			<p>
+				Potential demand is not effective alone, it should be coupled with the purchasing power. In some cases, prospects may desire a purchase but may not afford it, so, it is important to check if people can afford the products/services of the planned business.
+			</p>
+
+			<p>
+				Statistics show that gym subscribers are generally people who earn $70,000 and more. Having an idea about the percentage of people who fits this profile would be very helpful for the purpose.
+			</p>
+
+			<p>
+				<b>Security Level</b>
+			</p>
+
+			<p>
+				This factor can easily be measured by the crime rate data. A neighborhood with a high crime rate is not a logical place to launch a business. Unsafe areas are directly disadvantageous in terms of demand. On the other hand, the chance of having unusual distasteful events could increase costs and reduce profits.
+			</p>
+
+			<p>
+				Now, that I highlighted the criteria for the new business investment, I would like to show how we can use these.
+			</p>
+
+			<h3>The Process:</h3>
+			<p><ul>
+				<li>Gather data about the required fields</li>
+				<li>Clean the data and optimize</li>
+				<li>Use the data in a machine learning clustering model</li>
+				<li>Visualize the findings</li>
+			</ul>
+			</p>
+
+			<p><b>Gatherind Data:</b></p>
+			<p>Toronto municipality offers an amazing database. This database gives access to a ton of demographic, economic, and sociological records for each neighborhood.</p>
+			<p>I collected data about the crime rate, income level, size of green parks, and the number of potential customers using this database API.</p>
+			<p>In addition to these, I collected spatial data for the neighborhoods to present the findings on a map.</p>
+			<p>This is the link for <a href="https://open.toronto.ca/">the Database of Toronto Municipality</a> </p>
+			<p>
+				On the other hand, the Foursquare application also provides a free API service that helped me detect the locations of gyms in each area. I used this to get an idea about the competition level.
+			</p>
+			<a href="https://location.foursquare.com/developer/reference/api-overview">Link for Foursquare API</a>
+
+			<p>I gathered the data from these APIs in desired formats by using Python. This is the <a href="https://github.com/YusufGulcan/Business-Location-Prediction/blob/main/Toronto_data_collection.ipynb">link</a> for the details of the data collection part of the project.
+			</p>
+
+			<p><b>Data Cleaning and Optimization</b></p>
+			<p>The data is obtained smoothly from the APIs. However, since they come from different sources I had to convert them into matching formats. This process took most of my time but there are not many exciting things to show. The details are in the code for which I attached the links below.</p>
+			<p><b>Machine Learning Modeling</b></p>
+			<p>After getting the data, we need to use an unsupervised machine learning model to make inferences from the data. The name of the model is K-Means clustering, it is the most popular model clustering model in the machine learning field. As its name suggests, it clusters the occurrences (neighborhoods) according to their characteristics. A technique called elbow curve hints about the optimal number of clusters the data needs to be separated.</p>
+			<img src="assets/images/Gym2.jpg" alt="">
+			<p>Elbow curve hints at 4 clusters.</p>
+			<p>After adjusting the number of clusters, I run the model. This is the visualization of the output.</p>
+
+			<img src="assets/images/Gym3.jpg" alt="">
+
+			<p>Cluster 0 and 3 are mixed but they are not what we are interested in. According to the model, the best neighborhoods for investment are the ones in cluster 2. The neighborhoods in question show the highest level of income level, comparatively low level of competition, and acceptable crime rate.</p>
+			<p>Here is the <a href="https://github.com/YusufGulcan/Business-Location-Prediction/blob/main/Toronto_Gym%20Cluster.ipynb">link</a>	 for the details of the model, data, and neighborhoods.</p>
+			<h3>Visualization:</h3>
+
+			<img src="assets/images/Gym4.jpg" alt="">
+
+			<p>The best neighborhoods are detected and listed. It is also important to show 
+				them on a map. I needed to merge the geospatial data and clustering results to 
+				do it. The image shown below is an example from the representation created in
+				 Tableau. <a href="https://public.tableau.com/app/profile/yusuf.gulcan/viz/Book1_16617773505490/GymBusness?publish=yes">Here</a> 
+				 , there is an interactive dashboard that gives detailed information
+				  about the neighborhoods which may help the decision-makers.</p>
+			
+			<p>I hope the article helps you. It only includes the introduction and the general framework of the project. The links for the details of the project are given below:</p>
+			<ul>
+				<li>
+					<a href="https://github.com/YusufGulcan/Business-Location-Prediction">Code on Github</a>
+				</li>
+				<li>
+					<a href="https://public.tableau.com/app/profile/yusuf.gulcan/viz/Book1_16617773505490/GymBusness?publish=yes">Visualized Data on Tableau</a>
+				</li>		
+			</ul>
+    </article>
+    <!-- /Article -->
+
+    <!-- Sidebar -->
+    <aside class="col-md-4 sidebar sidebar-left">
+      <div class="widget">
+        <h4>Lorem ipsum dolor sit</h4>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          Facere, ratione delectus reiciendis nulla nisi pariatur
+          molestias animi eos repellat? Vel.
+        </p>
+      </div>
+      <div class="widget">
+        <h4>Lorem ipsum dolor sit</h4>
+        <ul>
+          <li><a href="">Lorem ipsum </a>dolor sit amet.</li>
+          <li>Nostrum, dolores labore tempore error.</li>
+          <li>Qui esse impedit vitae repellat.</li>
+          <li>Aliquam, laborum corporis molestiae nihil.</li>
+          <li>Voluptate, labore non adipisci nihil!</li>
+        </ul>
+      </div>
+    </aside>
+    <!-- /Sidebar -->
+  </div>
+</div>
+<!-- /container -->
+</main>
+
+    <footer id="footer" class="topspace">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Contact</h3>
+            <div class="widget-body">
+              <p>
+                +90 543 364 35 26<br />
+                <a href="mailto:#">yusuf.gulcan@gmail.com</a><br />
+                <br />
+                Istanbul,TR, Etiler 34337
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Follow me</h3>
+            <div class="widget-body">
+				<p class="follow-me-icons">
+          <a href="https://www.linkedin.com/in/yusufgulcan?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B2utAC4BsTIynV%2BOPWiSc0Q%3D%3D"><i class="fa fa-linkedin"></i></a>
+					<a href="https://www.kaggle.com/yusufglcan/code?userId=10645419&sortBy=dateRun&tab=bookmarked"><i class="fa-brands fa-kaggle"></i></a>
+					<a href="https://medium.com/@yusufgulcan"><i class="fa-brands fa-medium"></i></a>
+					<a href="https://github.com/YusufGulcan?tab=repositories"><i class="fa fa-github fa-2"></i></a>
+				  </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Disclaimer</h3>
+            <div class="widget-body">
+              <p>
+                This is my personal website designed to exhibit my project portfolio.
+                No other goal is intended. All Rights Reserved. 
+              </p>
+      
+            </div>
+          </div>
+      </div>
+    </footer>
+
+
+
+    <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="assets/js/template.js"></script>
+  </body>
+</html>

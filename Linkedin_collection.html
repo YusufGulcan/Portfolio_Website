@@ -67,16 +67,6 @@
             <ul class="nav navbar-nav">
               <li><a href="index.html">Home</a></li>
               <li class="active"><a href="about.html">About</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                  >More Pages <b class="caret"></b
-                ></a>
-                <ul class="dropdown-menu">
-                  <li><a href="sidebar-left.html">Left Sidebar</a></li>
-                  <li><a href="sidebar-right.html">Right Sidebar</a></li>
-                  <li><a href="single.html">Blog Post</a></li>
-                </ul>
-              </li>
               <li><a href="blog.html">Blog</a></li>
             </ul>
           </div>
@@ -112,15 +102,7 @@
               it is done here.
             </p>
             <p><img src="assets/images/linkedin.png" alt="" /></p>
-            <blockquote>
-              Velit, odit, eius, libero unde impedit quaerat dolorem assumenda
-              alias consequuntur optio quae maiores ratione tempore sit aliquid
-              architecto eligendi pariatur ab soluta doloremque dicta aspernatur
-              labore quibusdam dolore corrupti quod inventore. Maiores,
-              repellat, consequuntur eius repellendus eos aliquid molestiae ea
-              laborum ex quibusdam laudantium voluptates placeat consectetur
-              quam aliquam!
-            </blockquote>
+            
             <p>
               LinkedIn does not require a login, as the code I walked through in
               this article works. This saves a lot of effort and time. You can
@@ -133,7 +115,7 @@
               variable to the get() function.
             </p>
 
-            >
+            
             <script src="https://gist.github.com/YusufGulcan/b5869543d313406af4a34872d04cc343.js"></script>
             <h3>Collecting Links:</h3>
             <p>
@@ -155,6 +137,7 @@
               posts. After that point, users need to click this blue button:
             </p>
             <img src="assets/images/linkedin3.png" alt="" />
+            <p></p>
             <p>
               To solve this problem, I had to define two steps using Selenium
               functions before anything:
@@ -173,6 +156,7 @@
 			<p>After the scrolling stage is done, I started scraping links. The trick here was to find the block that included the job list. I right-clicked and inspected the page and looked for the container that covered(highlighted) the job list.</p>
 			
 			<img src="assets/images/linkedin4.png" alt="" />
+      <p></p>
 			<p>After finding the list, I went through the list and extracted the information I needed using the find_element() function. The code is as follows;</p>
 			
 			<script src="https://gist.github.com/YusufGulcan/d0bc381751600f90fadc8d5c0f1a592c.js"></script>
@@ -273,71 +257,27 @@
             <h3 class="widget-title">Follow me</h3>
             <div class="widget-body">
 				<p class="follow-me-icons">
-					<a href=""><i class="fa-brands fa-kaggle"></i></a>
-					<a href=""><i class="fa-brands fa-medium"></i></a>
-					<a href=""><i class="fa fa-github fa-2"></i></a>
+          <a href="https://www.linkedin.com/in/yusufgulcan?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B2utAC4BsTIynV%2BOPWiSc0Q%3D%3D"><i class="fa fa-linkedin"></i></a>
+					<a href="https://www.kaggle.com/yusufglcan/code?userId=10645419&sortBy=dateRun&tab=bookmarked"><i class="fa-brands fa-kaggle"></i></a>
+					<a href="https://medium.com/@yusufgulcan"><i class="fa-brands fa-medium"></i></a>
+					<a href="https://github.com/YusufGulcan?tab=repositories"><i class="fa fa-github fa-2"></i></a>
 				  </p>
             </div>
           </div>
 
           <div class="col-md-3 widget">
-            <h3 class="widget-title">Text widget</h3>
+            <h3 class="widget-title">Disclaimer</h3>
             <div class="widget-body">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque,
-                nihil natus explicabo ipsum quia iste aliquid repellat eveniet
-                velit ipsa sunt libero sed aperiam id soluta officia asperiores
-                adipisci maxime!
+                This is my personal website designed to exhibit my project portfolio.
+                No other goal is intended. All Rights Reserved. 
               </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque,
-                nihil natus explicabo ipsum quia iste aliquid repellat eveniet
-                velit ipsa sunt libero sed aperiam id soluta officia asperiores
-                adipisci maxime!
-              </p>
+      
             </div>
           </div>
-
-          <div class="col-md-3 widget">
-            <h3 class="widget-title">Form widget</h3>
-            <div class="widget-body">
-              <p>
-                +234 23 9873237<br />
-                <a href="mailto:#">yusuf.gulcan0@gmail.com</a><br />
-                <br />
-                234 Hidden Pond Road, Ashland City, TN 37015
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- /row of widgets -->
       </div>
     </footer>
 
-    <footer id="underfooter">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 widget">
-            <div class="widget-body">
-              <p>234 Hidden Pond Road, Ashland City, TN 37015</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 widget">
-            <div class="widget-body">
-              <p class="text-right">
-                Copyright &copy; 2014, Your awesome name here<br />
-                Design:
-                <a href="https://www.gettemplate.com" rel="designer"
-                  >Initio by GetTemplate</a
-                >
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- /row of widgets -->
-      </div>
-    </footer>
 
     <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
